@@ -1,0 +1,38 @@
+div {
+    color: blue;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    
+}
+
+.inner-container{
+    display: flex;
+
+    align-items: center;
+    width: 300px;
+    border: 2px black;
+    margin: 10px 10px 10px 10px ;
+}
+
+.outer-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+}
+
+.outer-image{
+    width: 800px;
+    height: 800px;
+}
+
+figure figcaption{
+    text-align: center;
+}
