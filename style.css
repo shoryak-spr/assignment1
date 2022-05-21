@@ -51,3 +51,12 @@ img {
     background-color: skyblue;
     
 }
+
+#fig {
+    display: flex;
+    flex-direction: column;
+}
+
+input {
+    text-align: center;
+}

@@ -43,78 +43,72 @@ function changeDisplay(event){
     console.log(str);
     let fig = element.querySelector('img');
     console.log(fig.src);
-    document.getElementById("figcaption").innerText = str;
+    document.getElementById("figcaption").setAttribute('value',str);
     document.getElementById("fig").querySelector('img').src = fig.src;
 
 }
 
-// document.addEventListener('keydown', function(e) {
-//     let parent = document.querySelector('.container');
-//     console.log(parent);
-//     var children = parent.children;
-//     var index = -1;
-//     switch (e.keyCode) {
-//         case 37:
-//             //alert('left');
-//             break;
-//         case 38:
-//             for(let i=0 ; i<children.length; i++){
-//                 if(children[i].classList.contains('selected')){
-//                     index = i;
-//                     break;
-//                 }
+document.addEventListener('keydown', function(e) {
+    let parent = document.querySelector('.container');
+    console.log(parent);
+    var children = parent.children;
+    var index = -1;
+    switch (e.keyCode) {
+        case 38:
+            for(let i=0 ; i<children.length; i++){
+                if(children[i].classList.contains('selected')){
+                    index = i;
+                    break;
+                }
 
-//             }
-//             if(index>0){
-//                 let element = children[index-1];
-//                 for(let i=0 ; i<children.length; i++){
-//                     children[i].classList.remove('selected');
-//                 }
-//                 element.classList.add('selected');
+            }
+            if(index>0){
+                let element = children[index-1];
+                for(let i=0 ; i<children.length; i++){
+                    children[i].classList.remove('selected');
+                }
+                element.classList.add('selected');
                 
-//                 console.log(children)
-//                 console.log(element);
-//                 let str = element.innerText;
-//                 console.log(str);
-//                 let fig = element.querySelector('img');
-//                 console.log(fig.src);
-//                 document.getElementById("figcaption").innerText = str;
-//                 document.getElementById("fig").querySelector('img').src = fig.src;
-//             }
-//             //alert('up');
-//             break;
-//         case 39:
-//             //alert('right');
-//             break;
-//         case 40:
-//             //let parentd = document.querySelector('.container');
-//             children = parent.children;
-//             index = children.length;
-//             for(let i=0 ; i<children.length; i++){
-//                 if(children[i].classList.contains('selected')){
-//                     index = i;
-//                     break;
-//                 }
+                console.log(children)
+                console.log(element);
+                let str = element.innerText;
+                console.log(str);
+                let fig = element.querySelector('img');
+                console.log(fig.src);
+                document.getElementById("figcaption").setAttribute('value',str);
+                document.getElementById("fig").querySelector('img').src = fig.src;
+            }
+            //alert('up');
+            break;
+        case 40:
+            children = parent.children;
+            index = children.length;
+            for(let i=0 ; i<children.length; i++){
+                if(children[i].classList.contains('selected')){
+                    index = i;
+                    break;
+                }
 
-//             }
-//             if(index<children.length-1){
-//                 let element = children[index+1];
-//                 for(let i=0 ; i<children.length; i++){
-//                     children[i].classList.remove('selected');
-//                 }
-//                 element.classList.add('selected');
+            }
+            if(index<children.length-1){
+                let element = children[index+1];
+                for(let i=0 ; i<children.length; i++){
+                    children[i].classList.remove('selected');
+                }
+                element.classList.add('selected');
                 
-//                 console.log(children)
-//                 console.log(element);
-//                 let str = element.innerText;
-//                 console.log(str);
-//                 let fig = element.querySelector('img');
-//                 console.log(fig.src);
-//                 document.getElementById("figcaption").innerText = str;
-//                 document.getElementById("fig").querySelector('img').src = fig.src;
-//             }
+                console.log(children)
+                console.log(element);
+                let str = element.innerText;
+                console.log(str);
+                let fig = element.querySelector('img');
+                console.log(fig.src);
+                document.getElementById("figcaption").setAttribute('value',str);
+                document.getElementById("fig").querySelector('img').src = fig.src;
+            }
             
-//             //alert('down');
-//             break;
-//     }
-// });
+            //alert('down');
+            break;
+    }
+});
+
