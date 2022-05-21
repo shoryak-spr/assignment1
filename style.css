@@ -19,6 +19,7 @@ div {
     width: 300px;
     border: 2px black;
     margin: 10px 10px 10px 10px ;
+    /* background-color: blue; */
 }
 
 .outer-container{
@@ -33,6 +34,20 @@ div {
     height: 800px;
 }
 
+.inner-img{
+    width: 50px;
+    height: 50px;
+}
+
 figure figcaption{
     text-align: center;
+}
+
+img {
+    margin: 5px 5px 5px 5px;
+}
+
+.inner-container.selected{
+    background-color: skyblue;
+    
 }
