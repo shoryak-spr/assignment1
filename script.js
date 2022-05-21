@@ -1,3 +1,4 @@
+// loading data from the file to the web page
 fetch('data.txt')
   .then(response => response.json())
   .then(data => {
@@ -27,6 +28,8 @@ fetch('data.txt')
   });
 
 
+  
+// function that acts on clicking on any button to change the display 
 function changeDisplay(event){
     let parent = document.querySelector('.container');
     console.log(parent);
@@ -43,11 +46,17 @@ function changeDisplay(event){
     console.log(str);
     let fig = element.querySelector('img');
     console.log(fig.src);
-    document.getElementById("figcaption").setAttribute('value',str);
+    //document.getElementById("figcaption").readOnly = false;
+    document.getElementById("figcaption").removeAttribute('value')
+    document.getElementById("figcaption").value = str;
+    console.log(document.getElementById("figcaption").readOnly);
+    console.log(document.getElementById("figcaption").value);
+    document.getElementById("figcaption").readOnly = true;
     document.getElementById("fig").querySelector('img').src = fig.src;
 
 }
 
+// key navigation logic 
 document.addEventListener('keydown', function(e) {
     let parent = document.querySelector('.container');
     console.log(parent);
@@ -75,7 +84,7 @@ document.addEventListener('keydown', function(e) {
                 console.log(str);
                 let fig = element.querySelector('img');
                 console.log(fig.src);
-                document.getElementById("figcaption").setAttribute('value',str);
+                document.getElementById("figcaption").value = str;
                 document.getElementById("fig").querySelector('img').src = fig.src;
             }
             //alert('up');
@@ -103,7 +112,7 @@ document.addEventListener('keydown', function(e) {
                 console.log(str);
                 let fig = element.querySelector('img');
                 console.log(fig.src);
-                document.getElementById("figcaption").setAttribute('value',str);
+                document.getElementById("figcaption").value = str;
                 document.getElementById("fig").querySelector('img').src = fig.src;
             }
             
@@ -112,3 +121,40 @@ document.addEventListener('keydown', function(e) {
     }
 });
 
+
+// editing the title from the editbox logic 
+
+ 
+var editing = false;
+ 
+function editCaption(){
+    document.getElementById('figcaption').readOnly = false;
+    editing = true;
+ }
+ 
+document.addEventListener('keydown', function(e) {
+   if(!editing) return;
+   if(e.keyCode == 13){
+       editing = false;
+       let textelement = document.getElementById('figcaption');
+       document.getElementById('figcaption').readonly =true;
+       let parent = document.querySelector('.container');
+       console.log(parent);
+        let children = parent.children;
+        let index = -1;
+        for(let i=0 ; i<children.length; i++){ 
+            if(children[i].classList.contains('selected')){
+                index = i;
+                break;
+            }
+        }
+        if(index!=-1){
+            let img = children[index].querySelector('img');
+            children[index].innerText = (textelement.value);
+            children[index].prepend(img);
+        }
+
+
+   }
+ 
+});
