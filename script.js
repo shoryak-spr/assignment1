@@ -1,4 +1,5 @@
 // loading data from the file to the web page
+var db = [];
 fetch('data.txt')
   .then(response => response.json())
   .then(data => {
@@ -16,7 +17,8 @@ fetch('data.txt')
         newButton.appendChild(img) 
         let span = document.createElement('span');
         span.innerText = data[i]['title'];
-        newButton.appendChild(document.createTextNode(data[i]['title']))
+        newButton.appendChild(document.createTextNode(start_and_end (data[i]['title'])))
+        db.push(data[i]['title']);
         newButton.setAttribute("class" , "inner-container")
         newButton.setAttribute("onclick" , "changeDisplay(event)")
         //newButton.innerText(data[0]['title']);
@@ -27,6 +29,7 @@ fetch('data.txt')
     
   });
 
+console.log(db); // db for displaying the titles , cant use the inner text as it is stored with ellipsis 
 
   
 // function that acts on clicking on any button to change the display 
@@ -39,10 +42,17 @@ function changeDisplay(event){
     }
     let element = event.currentTarget;
     element.classList.add('selected');
-    
+    let index =-1;
+    for(let i = 0;i<children.length;i++){
+        if(children[i].querySelector('img').src === element.querySelector('img').src){
+            index=i;
+            break;
+        }
+    }
     console.log(children)
     console.log(element);
-    let str = element.innerText;
+    //let str = element.innerText;
+    let str = db[index];
     console.log(str);
     let fig = element.querySelector('img');
     console.log(fig.src);
@@ -80,7 +90,7 @@ document.addEventListener('keydown', function(e) {
                 
                 console.log(children)
                 console.log(element);
-                let str = element.innerText;
+                let str = db[index-1];
                 console.log(str);
                 let fig = element.querySelector('img');
                 console.log(fig.src);
@@ -108,7 +118,7 @@ document.addEventListener('keydown', function(e) {
                 
                 console.log(children)
                 console.log(element);
-                let str = element.innerText;
+                let str = db[index+1];
                 console.log(str);
                 let fig = element.querySelector('img');
                 console.log(fig.src);
@@ -150,7 +160,8 @@ document.addEventListener('keydown', function(e) {
         }
         if(index!=-1){
             let img = children[index].querySelector('img');
-            children[index].innerText = (textelement.value);
+            db[index] = textelement.value;
+            children[index].innerText = (start_and_end(textelement.value));
             children[index].prepend(img);
         }
 
@@ -158,3 +169,12 @@ document.addEventListener('keydown', function(e) {
    }
  
 });
+
+
+function start_and_end(str) {
+    if (str.length > 35) {
+      return str.substr(0, 15) + ' ...... ' + str.substr(str.length-8, str.length);
+    }
+    return str;
+  }
+ 
