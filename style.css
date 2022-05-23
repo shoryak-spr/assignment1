@@ -15,12 +15,11 @@ div {
 
 .inner-container{
     display: flex;
-
     align-items: center;
     width: 300px;
-    border: 2px black;
-    margin: 10px 10px 10px 10px ;
-    /* background-color: blue; */
+    border: none;
+    margin: 1px 1px 1px 1px ;
+    background-color: white;
 }
 
 .outer-container{
@@ -31,7 +30,7 @@ div {
 }
 
 .outer-image{
-    width: 800px;
+    width: 750px;
     height: 800px;
 }
 
@@ -60,4 +59,5 @@ img {
 
 input {
     text-align: center;
+    border: none;
 }
